@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload
-npm run dev:wepp
+npm run dev:weapp
 
 # build for production with minification
 npm run build:weapp
