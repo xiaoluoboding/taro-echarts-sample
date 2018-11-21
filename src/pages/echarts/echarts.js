@@ -12,10 +12,8 @@ function initChart(canvas, width, height) {
   })
   canvas.setChart(chart)
   const model = {
-    yCates: ['Saturday', 'Friday', 'Thursday',
-      'Wednesday', 'Tuesday', 'Monday',
-      'Sunday'],
-    xCates: ['1', '2', '3', '4', '5'],
+    yCates: [...Array(24).keys()],
+    xCates: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
     data: [
       // [yCateIndex, xCateIndex, value]
       [0, 0, 5], [0, 1, 7], [0, 2, 3], [0, 3, 5], [0, 4, 2],
@@ -38,26 +36,32 @@ function initChart(canvas, width, height) {
     },
     animation: false,
     grid: {
-      bottom: 60,
+      bottom: 80,
       top: 10,
       left: 80
     },
     xAxis: {
       type: 'category',
-      data: model.xCates
+      data: model.xCates,
+      splitArea: {
+        show: true
+      }
     },
     yAxis: {
       type: 'category',
-      data: model.yCates
+      data: model.yCates,
+      splitArea: {
+        show: true
+      }
     },
     visualMap: {
       min: 1,
       max: 10,
-      show: false,
+      show: true,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
-      bottom: 10,
+      bottom: 20,
       inRange: {
         color: ['#37A2DA', '#32C5E9', '#67E0E3', '#91F2DE', '#FFDB5C', '#FF9F7F'],
       }
@@ -103,7 +107,7 @@ export default class Echarts extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <View className='echarts'>
         <ec-canvas id='mychart-dom-area' canvas-id='mychart-area' ec={this.state.ec}></ec-canvas>
