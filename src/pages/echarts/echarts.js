@@ -12,8 +12,9 @@ function initChart(canvas, width, height) {
   })
   canvas.setChart(chart)
   const model = {
-    yCates: [...Array(24).keys()],
-    xCates: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    yCates: [...Array(24).keys()].filter(v => v > 7),
+    // xCates: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    xCates: [...Array(30).keys()].map(v => `11-${v+1}`),
     data: [
       // [yCateIndex, xCateIndex, value]
       [0, 0, 5], [0, 1, 7], [0, 2, 3], [0, 3, 5], [0, 4, 2],

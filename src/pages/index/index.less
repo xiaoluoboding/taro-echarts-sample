@@ -1,0 +1,35 @@
+.index {
+  .title {
+    text-align: center;
+  }
+  .main {
+    .wrapper {
+      &.flex-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .flex-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        margin: 30px 0;
+      }
+      .echarts {
+        &-img {
+          display: block;
+          width: 64px;
+          height: 64px;
+          text-align: center;
+        }
+        &-name {
+          font-size: 24px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

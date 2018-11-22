@@ -1,8 +1,10 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+// import { AtButton } from 'taro-ui'
 
 import './index.less'
+
+import { chartTypes } from '../../constants/charts'
 
 export default class Index extends Component {
 
@@ -10,7 +12,8 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  gotoEcharts() {
+  gotoEcharts(type) {
+    console.log(type)
     Taro.navigateTo({
       url: '/pages/echarts/echarts'
     })
@@ -27,12 +30,18 @@ export default class Index extends Component {
   componentDidHide () { }
 
   render () {
+    const chartInfo = chartTypes.map(item => {
+      return <View key={item.type} class='flex-item echarts' onClick={this.gotoEcharts.bind(this, item.type)}>
+        <Image className="echarts-img" src={`/assets/images/${item.type}.png`}></Image>
+        <Text className="echarts-name">{item.name}</Text>
+      </View>
+    })
     return (
       <View className='index'>
-        <View className='title'>与小程序原生融合的各种示例</View>
+        <View className='title'>Taro ECharts 示例</View>
         <View className='main'>
-          <View className='wrapper'>
-            <AtButton type='primary' onClick={this.gotoEcharts}>echarts-for-weixin 示例</AtButton>
+          <View className='wrapper flex-wrap'>
+            {chartInfo}
           </View>
         </View>
       </View>
