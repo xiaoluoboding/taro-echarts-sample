@@ -8,7 +8,9 @@ class App extends Component {
   config = {
     pages: [
       'pages/index/index',
-      'pages/echarts/echarts'
+      'pages/echarts/echarts',
+      'pages/echarts/bar/bar',
+      'pages/echarts/heatmap/heatmap'
     ],
     window: {
       backgroundTextStyle: 'light',

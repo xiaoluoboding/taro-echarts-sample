@@ -13,9 +13,9 @@ export default class Index extends Component {
   }
 
   gotoEcharts(type) {
-    console.log(type)
     Taro.navigateTo({
-      url: '/pages/echarts/echarts'
+      url: `/pages/echarts/${type}/${type}`
+      // url: `/pages/echarts/echarts`
     })
   }
 

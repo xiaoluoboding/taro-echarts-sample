@@ -1,7 +1,7 @@
 {
 	"miniprogramRoot": "dist/",
 	"projectname": "taro-echarts-sample",
-	"description": "A sample of Echarts for taro",
+	"description": "A sample of ECharts for taro",
 	"appid": "wxe437309e45a3c330",
 	"setting": {
 		"urlCheck": false,
@@ -9,6 +9,7 @@
 		"postcss": false,
 		"minified": false,
 		"newFeature": true,
+		"nodeModules": false,
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
