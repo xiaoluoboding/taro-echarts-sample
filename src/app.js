@@ -14,7 +14,9 @@ class App extends Component {
       'pages/echarts/pie/pie',
       'pages/echarts/radar/radar',
       'pages/echarts/gauge/gauge',
-      'pages/echarts/heatmap/heatmap'
+      'pages/echarts/heatmap/heatmap',
+      'pages/echarts/scatter/scatter',
+      'pages/echarts/funnel/funnel'
     ],
     window: {
       backgroundTextStyle: 'light',

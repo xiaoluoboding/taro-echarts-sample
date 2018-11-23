@@ -2,7 +2,7 @@
   "name": "taro-echarts-sample",
   "version": "1.0.0",
   "private": true,
-  "description": "A sample of Echarts for taro",
+  "description": "A sample of ECharts for taro",
   "scripts": {
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",

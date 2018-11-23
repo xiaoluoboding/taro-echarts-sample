@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import * as echarts from '../../../components/ec-canvas/echarts'
+import * as echarts from '../../../components/ec-canvas/echarts.min'
 
 import '../echarts.less'
 
@@ -89,16 +89,14 @@ function initChart(canvas, width, height) {
   return chart
 }
 
-// @mixin
 class Echarts extends Component {
-  // mixins: [mixin]
   config = {
     navigationBarTitleText: 'ECharts 使用示例',
     navigationBarTextStyle: 'black',
     backgroundColor: '#eeeeee',
     backgroundTextStyle: 'light',
     usingComponents: {
-      'ec-canvas': '../../../components/ec-canvas/ec-canvas' // 书写第三方组件的相对路径
+      'ec-canvas': '../../../components/ec-canvas/ec-canvas'
     }
   }
 

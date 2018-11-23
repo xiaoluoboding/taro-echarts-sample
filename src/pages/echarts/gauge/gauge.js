@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import * as echarts from '../../../components/ec-canvas/echarts'
+import * as echarts from '../../../components/ec-canvas/echarts.min'
 
 import '../echarts.less'
 

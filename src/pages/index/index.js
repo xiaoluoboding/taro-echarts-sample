@@ -1,10 +1,10 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 // import { AtButton } from 'taro-ui'
 
 import './index.less'
 
-import { chartTypes } from '../../constants/charts'
+import { CHART_TYPES } from '../../constants/charts'
 
 export default class Index extends Component {
 
@@ -15,7 +15,6 @@ export default class Index extends Component {
   gotoEcharts(type) {
     Taro.navigateTo({
       url: `/pages/echarts/${type}/${type}`
-      // url: `/pages/echarts/echarts`
     })
   }
 
@@ -30,11 +29,11 @@ export default class Index extends Component {
   componentDidHide () { }
 
   render () {
-    const chartInfo = chartTypes.map(item => {
+    const chartInfo = CHART_TYPES.map(item => {
       return (
         <View key={item.type} class='flex-item echarts' onClick={this.gotoEcharts.bind(this, item.type)}>
-          <Image className="echarts-img" src={`/assets/images/${item.type}.png`}></Image>
-          <Text className="echarts-name">{item.name}</Text>
+          <Image className='echarts-img' src={item.img}></Image>
+          <Text className='echarts-name'>{item.name}</Text>
         </View>
       )
     })

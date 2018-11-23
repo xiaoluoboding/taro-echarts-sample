@@ -32,7 +32,7 @@ const config = {
   },
   weapp: {
     compile: {
-      exclude: ['src/components/ec-canvas/echarts.js']
+      exclude: ['src/components/ec-canvas/echarts.min.js']
     },
     module: {
       postcss: {
