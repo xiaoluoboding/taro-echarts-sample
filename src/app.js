@@ -10,6 +10,10 @@ class App extends Component {
       'pages/index/index',
       'pages/echarts/echarts',
       'pages/echarts/bar/bar',
+      'pages/echarts/line/line',
+      'pages/echarts/pie/pie',
+      'pages/echarts/radar/radar',
+      'pages/echarts/gauge/gauge',
       'pages/echarts/heatmap/heatmap'
     ],
     window: {

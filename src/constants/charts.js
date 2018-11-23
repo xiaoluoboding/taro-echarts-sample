@@ -16,6 +16,10 @@ const chartTypes = [
     name: '雷达图'
   },
   {
+    type: 'gauge',
+    name: '仪表盘'
+  },
+  {
     type: 'heatmap',
     name: '热力图'
   },

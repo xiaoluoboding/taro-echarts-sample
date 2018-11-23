@@ -13,7 +13,7 @@ function initChart(canvas, width, height) {
   canvas.setChart(chart);
 
   const option = {
-    color: ['#37a2da', '#32c5e9', '#67e0e3'],
+    color: ['#60ACFC', '#32D3EB', '#5BC49F', '#FEB64D', '#FF7C7C', '#9287E7'],
     tooltip: {
       trigger: 'axis',
       axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -123,7 +123,7 @@ class Echarts extends Component {
     backgroundColor: '#eeeeee',
     backgroundTextStyle: 'light',
     usingComponents: {
-      'ec-canvas': '../../../components/ec-canvas/ec-canvas' // 书写第三方组件的相对路径
+      'ec-canvas': '../../../components/ec-canvas/ec-canvas'
     }
   }
 

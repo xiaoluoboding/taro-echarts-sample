@@ -31,10 +31,12 @@ export default class Index extends Component {
 
   render () {
     const chartInfo = chartTypes.map(item => {
-      return <View key={item.type} class='flex-item echarts' onClick={this.gotoEcharts.bind(this, item.type)}>
-        <Image className="echarts-img" src={`/assets/images/${item.type}.png`}></Image>
-        <Text className="echarts-name">{item.name}</Text>
-      </View>
+      return (
+        <View key={item.type} class='flex-item echarts' onClick={this.gotoEcharts.bind(this, item.type)}>
+          <Image className="echarts-img" src={`/assets/images/${item.type}.png`}></Image>
+          <Text className="echarts-name">{item.name}</Text>
+        </View>
+      )
     })
     return (
       <View className='index'>
