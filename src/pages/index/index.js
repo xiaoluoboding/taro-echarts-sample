@@ -5,8 +5,10 @@ import { View, Text, Image } from '@tarojs/components'
 import './index.less'
 
 import { CHART_TYPES } from '../../constants/charts'
+import withShare from '../../decorators/withShare';
 
-export default class Index extends Component {
+@withShare()
+class Index extends Component {
 
   config = {
     navigationBarTitleText: '首页'
@@ -39,7 +41,7 @@ export default class Index extends Component {
     })
     return (
       <View className='index'>
-        <View className='title'>Taro ECharts 示例</View>
+        <View className='title'>Taro 使用 ECharts 示例</View>
         <View className='main'>
           <View className='wrapper flex-wrap'>
             {chartInfo}
@@ -50,3 +52,4 @@ export default class Index extends Component {
   }
 }
 
+export default Index
