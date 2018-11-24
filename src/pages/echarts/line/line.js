@@ -1,19 +1,12 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import * as echarts from '../../../components/ec-canvas/echarts.min'
-// import withEcharts from '../../../components/ec-canvas/withEchats'
-
 import '../echarts.less'
+import BaseEchart from '../../../components/base-echart/base-echart'
 
-function initChart(canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height
-  });
-  canvas.setChart(chart);
 
-  const option = {
+function initOption() {
+  return {
     color: ['#60ACFC', '#32D3EB', '#5BC49F', '#FEB64D', '#FF7C7C', '#9287E7'],
     legend: {
       data: ['A', 'B', 'C'],
@@ -80,39 +73,25 @@ function initChart(canvas, width, height) {
       }
     ]
   };
-
-  chart.setOption(option);
-  return chart;
 }
 
-// @withEcharts({
-//   navTitle: '折线图',
-//   initChart
-// })
-class Echarts extends Component {
+class LineChart extends Component {
+
   config = {
-    navigationBarTitleText: '折线图',
-    navigationBarTextStyle: 'black',
-    backgroundColor: '#eeeeee',
-    backgroundTextStyle: 'light',
-    usingComponents: {
-      'ec-canvas': '../../../components/ec-canvas/ec-canvas'
-    }
+    navigationBarTitleText: '折线图'
   }
 
   state = {
-    ec: {
-      onInit: initChart
-    }
+    option: initOption()
   }
 
   render() {
     return (
-      <View className='echarts'>
-        <ec-canvas id='mychart-dom-line' canvas-id='mychart-line' ec={this.state.ec}></ec-canvas>
+      <View className="base-echarts">
+        <BaseEchart style="margin-bottom: 64px;" option={this.state.option} />
       </View>
     )
   }
 }
 
-export default Echarts
+export default LineChart
