@@ -5,6 +5,9 @@ import * as echarts from '../../../components/ec-canvas/echarts.min'
 
 import '../echarts.less'
 
+import withECharts from '../../../decorators/withECharts';
+import withShare from '../../../decorators/withShare';
+
 function initChart(canvas, width, height) {
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -116,20 +119,16 @@ function initChart(canvas, width, height) {
   return chart;
 }
 
+@withECharts({
+  initChart
+})
+@withShare()
 class Echarts extends Component {
+
   config = {
     navigationBarTitleText: '柱状图',
-    navigationBarTextStyle: 'black',
-    backgroundColor: '#eeeeee',
-    backgroundTextStyle: 'light',
     usingComponents: {
       'ec-canvas': '../../../components/ec-canvas/ec-canvas'
-    }
-  }
-
-  state = {
-    ec: {
-      onInit: initChart
     }
   }
 
