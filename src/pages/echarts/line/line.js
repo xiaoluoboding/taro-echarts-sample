@@ -1,9 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
-import '../echarts.less'
 import BaseEchart from '../../../components/base-echart/base-echart'
-
 
 function initOption() {
   return {
@@ -76,7 +74,6 @@ function initOption() {
 }
 
 class LineChart extends Component {
-
   config = {
     navigationBarTitleText: '折线图'
   }
@@ -87,8 +84,8 @@ class LineChart extends Component {
 
   render() {
     return (
-      <View className="base-echarts">
-        <BaseEchart style="margin-bottom: 64px;" option={this.state.option} />
+      <View className='chart-area'>
+        <BaseEchart style='height: 320px;' option={this.state.option} />
       </View>
     )
   }
