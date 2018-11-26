@@ -1,12 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import _ from 'lodash'
 
 import * as echarts from '../ec-canvas/echarts.min';
-import { getDataset } from './utils'
+import dataFactory from './data-factory';
 
-import './base-echart.less'
+import './base-echart.less';
 
+@dataFactory()
 export default class BaseEchart extends Component {
   config = {
     navigationBarTitleText: 'Base ECharts',
@@ -20,24 +20,13 @@ export default class BaseEchart extends Component {
   }
 
   state = {
-    domId: 'echarts-dom-area',
     canvasId: 'echarts-type-area',
     ec: {
       lazyLoad: true
     }
   }
 
-  // 构建option
-  getOption(data, option) {
-    console.log(option)
-    console.log(_.isEmpty(data))
-    return {
-      ...option,
-      dataset: !_.isEmpty(data) && getDataset(data)
-    }
-  }
-  
-  // 初始化echart
+  // init echart
   initChart(option) {
     this.baseEchart.init((canvas, width, height) => {
       const chart = echarts.init(canvas, null, {
@@ -47,14 +36,22 @@ export default class BaseEchart extends Component {
 
       chart.setOption(option);
 
+      // bind chart instance
+      this.chart = chart
+
       return chart;
     })
   }
 
+  // dispose echart
+  dispose() {
+    if (this.chart) {
+      this.chart.dispose();
+    }
+  }
+
   componentDidMount () {
-    const { data, option } = this.props
-    const chartOption = this.getOption(data, option)
-    this.initChart(chartOption)
+    this.init()
   }
 
   render() {
@@ -69,7 +66,7 @@ export default class BaseEchart extends Component {
 }
 
 BaseEchart.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object,
   option: PropTypes.object.isRequired
 };
 
