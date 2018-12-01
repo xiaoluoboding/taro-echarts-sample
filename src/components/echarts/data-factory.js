@@ -1,7 +1,7 @@
-import isEmpty from 'lodash.isempty'
+import isEmpty from 'lodash.isempty';
 import isEqual from 'fast-deep-equal';
 
-import { getDataset } from './utils'
+import { getDataset } from './utils';
 
 export default function dataFactory(args = {}) {
   return function wrappedComponent(Component) {
@@ -16,32 +16,49 @@ export default function dataFactory(args = {}) {
         super(...arguments);
       }
 
-      // build option
-      getOption(data, option) {
-        return {
-          ...option,
-          dataset: !isEmpty(data) && getDataset(data)
+      state = {
+        option: {}
+      }
+
+      getSeries = data => {
+        if (data && data.dimensions && data.measures) {
+          const { dimensions, measures } = data
+          return measures.map(({ name, data, type, ...rest}, index) => {
+            return {
+              ...rest,
+              type: chartType
+            }
+          })
         }
       }
 
-      init () {
-        const { data, option } = this.props
-        const chartOption = this.getOption(data, option)
-        this.initChart(chartOption)
+      init() {
+        const { data } = this.props
+        const optionWithoutData = this.getOption(data)
+        const { series } = optionWithoutData
+        const option = {
+          ...optionWithoutData,
+          series: this.getSeries(data, series),
+          dataset: !isEmpty(data) && getDataset(data)
+        }
+        console.log(JSON.stringify(option))
+        this.setState({
+          option
+        })
+      }
+
+      componentDidMount() {
+        this.init()
       }
 
       componentDidUpdate(prevProps) {
-        // if data or option changed, rebuild option
-        if (
-          !isEqual(prevProps.data, this.props.data) ||
-          !isEqual(prevProps.option, this.props.option)
-        ) {
-          console.log('factory option is changed')
-          this.init();
+        // if data changed, rebuild option
+        if (!isEqual(prevProps.data, this.props.data)) {
+          this.init()
           return;
         }
-        if (super.componentWillUpdate) {
-          super.componentWillUpdate();
+        if (super.componentDidUpdate) {
+          super.componentDidUpdate();
         }
       }
 

@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 
 import '../echarts.less'
 
-import BaseEchart from '../../../components/echarts/base-echart'
+import PieChart from '../../../components/echarts/packages/pie'
 import withShare from '../../../decorators/withShare';
 
 @withShare()
@@ -12,50 +12,27 @@ export default class PiePage extends Component {
     navigationBarTitleText: '饼图'
   }
 
-  getOption = () => {
-    return {
-      color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#92CEFF", "#6084E0"],
-      legend: {},
-      tooltip: {},
-      series: [{
-        label: {
-          normal: {
-            fontSize: 14
-          }
-        },
-        type: 'pie',
-        center: ['50%', '50%'],
-        radius: [0, '50%'],
-        itemStyle: {
-          emphasis: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 2, 2, 0.3)'
-          }
-        }
-      }]
-    };
-  }
-
   state = {
     chartData: {
       dimensions: {
-        name: '渠道',
-        data: ['APP', 'PC', 'M端', '微信', '小程序']
+        name: '城市',
+        data: ['北京', '武汉', '杭州', '广州', '上海']
       },
       measures: [{
-        name: 'PV',
-        data: [40000, 27800, 22000, 20200, 13600]
+        name: '占比',
+        data: [55, 20, 10, 20, 38]
       }]
-    },
-    chartOption: this.getOption()
+    }
   }
 
   render() {
-    const { chartData, chartOption } = this.state
+    const { chartData } = this.state
     return (
       <View className='chart-area'>
-        <BaseEchart data={chartData} option={chartOption} />
+        <PieChart
+          style='margin-top: 100px; width: 100%; height: 320px;'
+          data={chartData}
+        />
       </View>
     )
   }

@@ -1,12 +1,11 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
+import isEqual from 'fast-deep-equal';
 
 import * as echarts from '../ec-canvas/echarts.min';
-import dataFactory from './data-factory';
 
 import './base-echart.less';
 
-@dataFactory()
 export default class BaseEchart extends Component {
   config = {
     navigationBarTitleText: 'Base ECharts',
@@ -50,8 +49,20 @@ export default class BaseEchart extends Component {
     }
   }
 
-  componentDidMount () {
-    this.init()
+  componentDidMount() {
+    this.initChart(this.props.option)
+  }
+
+  componentDidUpdate(prevProps) {
+    // if option changed, rerender echart
+    if (!isEqual(prevProps.option, this.props.option)) {
+      console.log('rerender echart')
+      this.initChart(this.props.option)
+      return;
+    }
+    if (super.componentDidUpdate) {
+      super.componentDidUpdate();
+    }
   }
 
   render() {
@@ -66,11 +77,9 @@ export default class BaseEchart extends Component {
 }
 
 BaseEchart.propTypes = {
-  data: PropTypes.object,
   option: PropTypes.object.isRequired
 };
 
 BaseEchart.defaultProps = {
-  data: {},
   option: {}
 };
