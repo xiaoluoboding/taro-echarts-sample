@@ -38,6 +38,56 @@ const CHART_TYPES = [
     type: 'funnel',
     name: '漏斗图',
     img: require('../assets/images/funnel.png')
+  },
+  {
+    type: 'tree',
+    name: '树图',
+    img: require('../assets/images/tree.png')
+  },
+  {
+    type: 'treemap',
+    name: '矩形树图',
+    img: require('../assets/images/treemap.png')
+  },
+  {
+    type: 'sunburst',
+    name: '旭日图',
+    img: require('../assets/images/sunburst.png')
+  },
+  {
+    type: 'candlestick',
+    name: 'K线图',
+    img: require('../assets/images/k.png')
+  },
+  {
+    type: 'map',
+    name: '地图',
+    img: require('../assets/images/map.png')
+  },
+  {
+    type: 'graph',
+    name: '关系图',
+    img: require('../assets/images/graph.png')
+  },
+  {
+    type: 'boxplot',
+    name: '箱型图',
+    img: require('../assets/images/boxplot.png')
+  },
+  {
+    type: 'parallel',
+    name: '平行坐标图',
+    img: require('../assets/images/parallel.png')
+  },
+  {
+    type: 'sankey',
+    name: '桑基图',
+    img: require('../assets/images/sankey.png')
+  },
+  {
+    type: 'themeRiver',
+    name: '主题河流图',
+    img: require('../assets/images/themeRiver.png')
   }
 ]
 

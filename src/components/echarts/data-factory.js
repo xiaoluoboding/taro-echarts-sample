@@ -34,17 +34,15 @@ export default function dataFactory(args = {}) {
 
       init() {
         const { data } = this.props
-        const optionWithoutData = this.getOption(data)
-        const { series } = optionWithoutData
+        const options = this.getOption(this.props.data, this.props.option)
+        const { series } = options
         const option = {
-          ...optionWithoutData,
+          ...options,
           series: this.getSeries(data, series),
           dataset: !isEmpty(data) && getDataset(data)
         }
-        console.log(JSON.stringify(option))
-        this.setState({
-          option
-        })
+        // console.log(JSON.stringify(option))
+        this.setState({ option })
       }
 
       componentDidMount() {

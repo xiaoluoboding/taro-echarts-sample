@@ -5,7 +5,7 @@ import { View, Text, Image } from '@tarojs/components'
 import './index.less'
 
 import { CHART_TYPES } from '../../constants/charts'
-import withShare from '../../decorators/withShare';
+import withShare from '../../decorators/withShare'
 
 @withShare()
 class Index extends Component {

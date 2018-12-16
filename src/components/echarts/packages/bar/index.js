@@ -5,9 +5,9 @@ import DataFactory from '../../data-factory'
 import optionHandler from './optionHandler'
 
 @DataFactory({
-  chartType: 'pie'
+  chartType: 'bar'
 })
-export default class PieChart extends Component {
+export default class BarChart extends Component {
 
   constructor() {
     super(...arguments)
